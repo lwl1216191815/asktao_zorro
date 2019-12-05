@@ -1,0 +1,57 @@
+<div nz-row>
+    <div nz-col nzSpan="12">
+        <!-- 查询表单 -->
+        <form nz-form [nzLayout]="'inline'" (ngSubmit)="query" style="margin: 10px;">
+            <nz-form-item nz-row>
+                <nz-form-label nzSpan="4">名称</nz-form-label>
+                <nz-form-control nzSpan="20">
+                    <input nzSpan="20" nz-input placeholder="请输入字典类型名称">
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control>
+                    <button nz-button nzType="primary">查询</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <!-- 功能按钮 -->
+        <div nz-row style="margin: 10px;">
+            <div nz-col nzSpan="6">
+                <button nz-button nzType="primary" (click)="addDicType()"><i nz-icon nzType="plus"></i>添加</button>
+            </div>
+        </div>
+        <!-- 数据表格 -->
+        <nz-table #dicTypeTable nzBordered [nzData]="typeResult" [nzLoading]="typeLoading" nzShowSizeChanger
+            [nzFrontPagination]="false" [nzTotal]="typeTotal" [(nzPageIndex)]="typePageNum"
+            [(nzPageSize)]="typePageSize" (nzPageIndexChange)="query()" (nzPageSizeChange)="query()"
+            [nzWidthConfig]="['10%', '15%', '20%', '15%', '15%', '25%']">
+            <thead>
+                <tr>
+                    <th nzShowCheckbox></th>
+                    <th>序号</th>
+                    <th>操作</th>
+                    <th>名称</th>
+                    <th>编码</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of typeResult;let i = index">
+                    <td nzShowCheckbox></td>
+                    <td>{{i+1}}</td>
+                    <td>
+                        <button nz-button nzShape="circle"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <button nz-button nzShape="circle" nzType="primary"><i nz-icon nzType="file-text" nzTheme="outline"></i></button>
+                    </td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.code}}</td>
+                    <td>{{data.remark}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+    <div nz-col nzSpan="12">
+        字典信息
+    </div>
+</div>

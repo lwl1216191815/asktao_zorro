@@ -1,0 +1,36 @@
+<div nz-row style="padding: 20px 10px">
+    <div nz-col nzSpan="12" nzOffset="5">
+        <form nz-form (ngSubmit)="saveData()">
+            <nz-form-item nz-row>
+                <nz-form-label nzRequired nzSpan="6">字典类型名称</nz-form-label>
+                <nz-form-control nzSpan="18">
+                    <input nz-input type="text" [(ngModel)]="entity.name" [ngModelOptions]="{standalone: true}">
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                <nz-form-label nzRequired nzSpan="6">编码</nz-form-label>
+                <nz-form-control nzSpan="18">
+                    <input nz-input type="text" [(ngModel)]="entity.code" [ngModelOptions]="{standalone: true}">
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                <nz-form-label nzSpan="6">排序</nz-form-label>
+                <nz-form-control nzSpan="18">
+                    <nz-input-number [(ngModel)]="entity.sort" [ngModelOptions]="{standalone: true}"></nz-input-number>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                <nz-form-label nzSpan="6">备注</nz-form-label>
+                <nz-form-control nzSpan="18">
+                    <textarea rows="4" nz-input [(ngModel)]="entity.remark" [ngModelOptions]="{standalone: true}"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item nz-row>
+                <nz-form-control nzSpan="18" nzOffset="6">
+                    <button nz-button nzType="primary">提交</button>
+                    <button nz-butto>取消</button>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+</div>
