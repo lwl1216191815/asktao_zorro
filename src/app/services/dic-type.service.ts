@@ -41,4 +41,15 @@ export class DicTypeService {
     params = params.set('pageNum', pageNum.toString()).set('pageSize', pageSize.toString());
     return this.httpService.get(this.url + method, {header, params});
   }
+  /**
+   * 根据记录ID删除数据
+   * @param ids 需要删除的记录id，多个ID用，分割
+   */
+  deleteDataByIds(ids: string) {
+    const method = '/deleteDataByIds';
+    const header = {headers : new HttpHeaders()};
+    let params = new HttpParams();
+    params = params.set('ids', ids);
+    return this.httpService.delete(this.url + method, {header, params});
+  }
 }

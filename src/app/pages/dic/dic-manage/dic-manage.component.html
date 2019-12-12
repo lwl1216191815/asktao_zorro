@@ -16,8 +16,11 @@
         </form>
         <!-- 功能按钮 -->
         <div nz-row style="margin: 10px;">
-            <div nz-col nzSpan="6">
+            <div nz-col nzSpan="4">
                 <button nz-button nzType="primary" (click)="addDicType()"><i nz-icon nzType="plus"></i>添加</button>
+            </div>
+            <div nz-col nzSpan="4">
+                <button nz-button nzType="danger" (click)="deleteData()"><i nz-icon nzType="delete"></i>删除</button>
             </div>
         </div>
         <!-- 数据表格 -->
@@ -27,7 +30,7 @@
             [nzWidthConfig]="['10%', '15%', '20%', '15%', '15%', '25%']">
             <thead>
                 <tr>
-                    <th nzShowCheckbox></th>
+                    <th nzShowCheckbox (nzCheckedChange)="checkAll($event)"></th>
                     <th>序号</th>
                     <th>操作</th>
                     <th>名称</th>
@@ -37,7 +40,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let data of typeResult;let i = index">
-                    <td nzShowCheckbox></td>
+                    <td nzShowCheckbox [(nzChecked)]="data.checked"></td>
                     <td>{{i+1}}</td>
                     <td>
                         <button nz-button nzShape="circle"><i nz-icon nzType="edit" nzTheme="outline"></i></button>
